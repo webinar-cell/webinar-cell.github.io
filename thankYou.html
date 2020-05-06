@@ -197,7 +197,11 @@
       <div class="container">
         <header class="section-header">
           <h3>Talk with our executive on whatsapp and Book Now</h3>
-          <p style="font-size: 18px"> You would be asked a geniune payment of <b>INR 99</b> for this webinar. </p>
+            <input type="radio" id="solo" name="pack" value="Book for this event only">
+            <label for="solo">Book for this event only</label><br>
+            <input type="radio" id="full" name="pack" value="Book for all 10 events">
+            <label for="full">Book for all 10 events</label><br>
+          <p style="font-size: 18px"> You would be asked a geniune payment of <b>INR <span id="money">99</span></b> for this webinar. </p>
         </header>
 
         <div class="row row-eq-height justify-content-center">
@@ -225,15 +229,28 @@
   function addComment()
   {
     var parameters = location.search.substring(1).split("&");
-
     var temp = parameters[0].split("=");
     var l = unescape(temp[1]);
     // this one is title
     temp = parameters[1].split("=");
     var c = unescape(temp[1]);
     // this one is date
-    var link = "https://wa.me/919669128275?text=I+am+interested+to+book+my+entry+pass+for+the+webinar+on+"+l+"+at+"+c+"."
-    var url_ = document.createTextNode(link)
+    
+    var solo_radio = document.getElementById('solo');
+    var full_radio = document.getElementById('full');
+    
+    var link = "";
+    if(solo_radio.checked == True)
+    {
+      link = "https://wa.me/919669128275?text=I+am+interested+to+book+my+entry+pass+for+the+webinar+on+"+l+"+at+"+c+".";
+    }
+    else
+    {
+      link = "https://wa.me/919669128275?text=I+am+interested+to+book+my+entry+pass+for+all+the+webinars+."
+    }
+    
+    
+    var url_ = document.createTextNode(link);
     var button = document.getElementById("whatsapp-link");
     button.href=link;
     document.getElementById("pass").innerHTML = c;
