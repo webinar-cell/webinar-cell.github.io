@@ -197,7 +197,7 @@
       <div class="container">
         <header class="section-header">
           <h3>Talk with our executive on whatsapp and Book Now</h3>
-            <input type="radio" id="solo" name="pack" onclick="setsolo();" value="Book for this event only" selected>
+            <input type="radio" id="solo" name="pack" onclick="setsolo();" value="Book for this event only" checked>
             <label for="solo">Book for this event only</label><br>
             <input type="radio" id="full" name="pack" onclick="setfull();" value="Book for all 10 events">
             <label for="full">Book for all 10 events</label><br>
@@ -226,24 +226,20 @@
 <!-- the link would constitute of title and date -->
 <script language="JavaScript">
 
-  function addComment()
-  {
-    var parameters = location.search.substring(1).split("&");
-    var temp = parameters[0].split("=");
-    var l = unescape(temp[1]);
-    // this one is title
-    temp = parameters[1].split("=");
-    var c = unescape(temp[1]);
-    // this one is date
-    
-    var solo_radio = document.getElementById('solo');
-    var full_radio = document.getElementById('full');
-    
-    var link = "";
-    
-    function setsolo()
+function setsolo()
     {
-      link = "https://wa.me/919669128275?text=I+am+interested+to+book+my+entry+pass+for+the+webinar+on+"+l+"+at+"+c+".";
+      var parameters = location.search.substring(1).split("&");
+      var temp = parameters[0].split("=");
+      var l = unescape(temp[1]);
+      // this one is title
+      temp = parameters[1].split("=");
+      var c = unescape(temp[1]);
+      // this one is date
+
+      var solo_radio = document.getElementById('solo');
+      var full_radio = document.getElementById('full');
+
+      var link = "https://wa.me/919669128275?text=I+am+interested+to+book+my+entry+pass+for+the+webinar+on+"+l+"+at+"+c+".";
       var url_ = document.createTextNode(link);
       var button = document.getElementById("whatsapp-link");
       button.href=link;
@@ -252,20 +248,25 @@
     
     function setfull()
     {
-      link = "https://wa.me/919669128275?text=I+am+interested+to+book+my+entry+pass+for+all+the+webinars+."
+      var parameters = location.search.substring(1).split("&");
+      var temp = parameters[0].split("=");
+      var l = unescape(temp[1]);
+      // this one is title
+      temp = parameters[1].split("=");
+      var c = unescape(temp[1]);
+      // this one is date
+
+      var solo_radio = document.getElementById('solo');
+      var full_radio = document.getElementById('full');
+
+      var link = "https://wa.me/919669128275?text=I+am+interested+to+book+my+entry+pass+for+all+the+webinars+."
       var url_ = document.createTextNode(link);
       var button = document.getElementById("whatsapp-link");
       button.href=link;
       document.getElementById("pass").innerHTML = c;
     }
-    
-    
-    var url_ = document.createTextNode(link);
-    var button = document.getElementById("whatsapp-link");
-    button.href=link;
-    document.getElementById("pass").innerHTML = c;
-  }
-addComment();
+  
+  setsolo();
 
 </script>
 
